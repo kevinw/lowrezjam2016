@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Vibrate : MonoBehaviour {
-
+	public int layers = 1;
 	public float amount = 1.0f;
 
 	public Vibratee target;
