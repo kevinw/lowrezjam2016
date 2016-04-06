@@ -16,4 +16,10 @@ public static class Extensions {
 
 		return vec;
 	}
+
+	static public Vector2 Round(this Vector2 round) {
+		round.x = Mathf.Round(round.x);
+		round.y = Mathf.Round(round.y);
+		return round;
+	}
 }

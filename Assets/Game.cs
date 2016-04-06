@@ -3,13 +3,20 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class Game : MonoBehaviour {
+	public static Game Instance;
+
 	public RectTransform player;
 	public RectTransform target;
-
 	public float moveSpeed = 1.0f;
-	public float cpuSpeed = 30.0f;
-
 	public Rect playspace;
+
+	void Awake() {
+		Instance = this;
+	}
+
+	void Update() {
+		DoPlayerInput();
+	}
 
 	void DoPlayerInput() {
 		var move = Vector2.zero;
@@ -21,39 +28,4 @@ public class Game : MonoBehaviour {
 		player.anchoredPosition = playspace.Clamp(player.anchoredPosition + move);
 	}
 
-	IEnumerator DoRandomPoints() {
-		while (true) {
-			var headTo = playspace.RandomPointInside();
-
-			while (Vector2.Distance(target.anchoredPosition, headTo) > 0.05) {
-				var myPos = target.anchoredPosition;
-				var delta = headTo - myPos;
-				myPos += delta.normalized * cpuSpeed * Time.deltaTime;
-				target.anchoredPosition = playspace.Clamp(myPos);
-				yield return null;
-			}
-
-			yield return new WaitForSeconds(0.5f);
-		}
-	}
-	
-	IEnumerator DoAI() {
-		while (true) {
-			var playerPos = player.anchoredPosition;
-			var myPos = target.anchoredPosition;
-			var deltaVec = myPos - playerPos;
-			Debug.Log(playerPos + " " + myPos + " " + deltaVec);
-			myPos += deltaVec.normalized * cpuSpeed * Time.deltaTime;
-			target.anchoredPosition = playspace.Clamp(myPos);
-			yield return null;
-		}
-	}
-
-	void Start() {
-		StartCoroutine(DoRandomPoints());
-	}
-
-	void Update() {
-		DoPlayerInput();
-	}
 }
