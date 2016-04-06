@@ -20,6 +20,22 @@ public class Game : MonoBehaviour {
 		move = move.normalized * moveSpeed * Time.deltaTime;
 		player.anchoredPosition = playspace.Clamp(player.anchoredPosition + move);
 	}
+
+	IEnumerator DoRandomPoints() {
+		while (true) {
+			var headTo = playspace.RandomPointInside();
+
+			while (Vector2.Distance(target.anchoredPosition, headTo) > 0.05) {
+				var myPos = target.anchoredPosition;
+				var delta = headTo - myPos;
+				myPos += delta.normalized * cpuSpeed * Time.deltaTime;
+				target.anchoredPosition = playspace.Clamp(myPos);
+				yield return null;
+			}
+
+			yield return new WaitForSeconds(0.5f);
+		}
+	}
 	
 	IEnumerator DoAI() {
 		while (true) {
@@ -34,7 +50,7 @@ public class Game : MonoBehaviour {
 	}
 
 	void Start() {
-		StartCoroutine(DoAI());
+		StartCoroutine(DoRandomPoints());
 	}
 
 	void Update() {
