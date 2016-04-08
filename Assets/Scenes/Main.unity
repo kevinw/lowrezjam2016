@@ -352,6 +352,7 @@ GameObject:
   - 114: {fileID: 122648731}
   - 114: {fileID: 122648732}
   - 114: {fileID: 122648733}
+  - 114: {fileID: 122648734}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -617,6 +618,23 @@ MonoBehaviour:
   minValue: 0
   maxValue: 0.5
   speed: 5
+--- !u!114 &122648734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 122648724}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb3f576fe6cf8d45b47c90f730cc476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 0}
+  ColorCount: 4
+  PaletteHeight: 64
+  PaletteTexture: {fileID: 2800000, guid: fb33da2b388e3b24a8c66d4fcf175a25, type: 3}
+  DitherSize: 8
+  DitherTexture: {fileID: 2800000, guid: e415a7c64c416a643b7777a2d2343e9b, type: 3}
 --- !u!1 &182758593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,6 +1151,7 @@ GameObject:
   - 222: {fileID: 252084085}
   - 114: {fileID: 252084084}
   - 96: {fileID: 252084086}
+  - 114: {fileID: 252084087}
   m_Layer: 5
   m_Name: TargetDot
   m_TagString: Untagged
@@ -1237,6 +1256,18 @@ TrailRenderer:
       rgba: 16777215
   m_MinVertexDistance: 0.1
   m_Autodestruct: 1
+--- !u!114 &252084087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 252084082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a549613dcb5d14bf6a460577328a6c94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cpuSpeed: 30
 --- !u!1 &388996000
 GameObject:
   m_ObjectHideFlags: 0
@@ -2458,8 +2489,9 @@ GameObject:
   - 224: {fileID: 975742916}
   - 222: {fileID: 975742918}
   - 114: {fileID: 975742917}
+  - 114: {fileID: 975742919}
   m_Layer: 5
-  m_Name: Text
+  m_Name: DebugText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2472,15 +2504,15 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 975742915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1924304022}
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 16.9}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -30, y: -25}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &975742917
 MonoBehaviour:
@@ -2494,7 +2526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.74264705, b: 0.8864097, a: 1}
+  m_Color: {r: 0.32352942, g: 0.20458478, b: 0.27102968, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2503,24 +2535,38 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 10
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 0.76
-  m_Text: god is a lie
+  m_Text: 0.0
 --- !u!222 &975742918
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 975742915}
+--- !u!114 &975742919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 975742915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &991669581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3918,7 +3964,6 @@ GameObject:
   - 224: {fileID: 1924304022}
   - 223: {fileID: 1924304021}
   - 114: {fileID: 1924304020}
-  - 114: {fileID: 1924304019}
   - 114: {fileID: 1924304023}
   m_Layer: 5
   m_Name: GameCanvas
@@ -3927,22 +3972,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1924304019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1924304018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &1924304020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4015,16 +4044,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5650b68871e8a4b518c8979a6f53ac9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  excitement: 0
   player: {fileID: 1252194917}
-  target: {fileID: 252084083}
+  partner: {fileID: 252084087}
   moveSpeed: 40
-  cpuSpeed: 30
   playspace:
     serializedVersion: 2
     x: -30
     y: -30
     width: 60
     height: 60
+  minExciteDistance: 10
+  exciteFactor: 1
+  exciteCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  debugText: {fileID: 975742917}
 --- !u!1 &2028079995
 GameObject:
   m_ObjectHideFlags: 0
@@ -4144,6 +4192,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2054658976}
   - 20: {fileID: 2054658975}
+  - 114: {fileID: 2054658977}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4197,6 +4246,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 604968643}
   m_RootOrder: 0
+--- !u!114 &2054658977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2054658974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb3f576fe6cf8d45b47c90f730cc476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 79146a00e51a642be976f6b4f99dd66d, type: 3}
+  ColorCount: 4
+  PaletteHeight: 64
+  PaletteTexture: {fileID: 2800000, guid: fb33da2b388e3b24a8c66d4fcf175a25, type: 3}
+  DitherSize: 8
+  DitherTexture: {fileID: 2800000, guid: e415a7c64c416a643b7777a2d2343e9b, type: 3}
 --- !u!1 &2090593534
 GameObject:
   m_ObjectHideFlags: 0
