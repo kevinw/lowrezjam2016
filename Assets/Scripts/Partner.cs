@@ -14,24 +14,14 @@ public struct Interval {
 	public float RandomValue { get { return Random.Range(min, max); } }
 }
 
-public class Partner : MonoBehaviour {
+public class Partner : PlayerDot {
 	public float cpuSpeed = 30.0f;
 
 	public Interval pauseTime = new Interval(0.1f, 0.5f);
 
-	RectTransform rt;
-
-	void Awake() {
-		rt = GetComponent<RectTransform>();
-	}
-
 	void Start() {
 		StartCoroutine(DoRandomPoints());
 	}
-
-	public Vector2 Position { get {
-		return rt.anchoredPosition;
-	} }
 
 	Vector2 previousPoint = new Vector2(Mathf.NegativeInfinity, Mathf.NegativeInfinity);
 
@@ -53,8 +43,8 @@ public class Partner : MonoBehaviour {
 	IEnumerator DoRandomPoints() {
 		while (true) {
 			var headTo = NextPoint();
-			while (Vector2.Distance(rt.anchoredPosition, headTo) > 0.05) {
-				var distance = Vector2.Distance(rt.anchoredPosition, headTo);
+			while (Vector2.Distance(Position, headTo) > 0.05) {
+				var distance = Vector2.Distance(Position, headTo);
 				var myPos = rt.anchoredPosition;
 				var delta = headTo - myPos;
 				myPos += Vector2.ClampMagnitude(delta.normalized * cpuSpeed * Time.deltaTime, distance);

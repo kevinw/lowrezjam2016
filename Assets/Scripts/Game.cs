@@ -19,7 +19,7 @@ public class Game : MonoBehaviour {
 
 	void Awake() {
 		Instance = this;
-		animator.speed = 0;
+		animator.speed = 0.0f;
 	}
 
 	void Update() {
@@ -58,31 +58,46 @@ public class Game : MonoBehaviour {
 		player.anchoredPosition = playspace.Clamp(player.anchoredPosition + move);
 	}
 
-	void DoExcite() {
+	public float ExciteProximityFactor { get {
+		float factor = 0;
 		var playerPos = player.anchoredPosition;
 		var partnerPos = partner.Position;
 
 		var distance = Vector2.Distance(playerPos, partnerPos);
 		if (distance <= minExciteDistance) {
-			var factor = 1.0f - distance / minExciteDistance;
-			factor = exciteCurve.Evaluate(factor) * exciteFactor;
-			excitement += factor * Time.deltaTime;
+			factor = 1.0f - distance / minExciteDistance;
+			//factor = exciteCurve.Evaluate(factor);
 		}
+
+		return factor;
+	} }
+
+	void DoExcite() {
+		excitement += ExciteProximityFactor * exciteFactor * Time.deltaTime;
 	}
 
 	void DoGUI() {
-		if (debugText) {
+		if (debugText)
 			debugText.text = excitement.ToString();
-		}
 	}
 
-	void ScrubAnimation() {
-		//animator.SetTime(excitement);
-		/*
-		var clip = animation["FuckSun"];
-		clip.time = excitement;
-		animation.Sample();
-		*/
+	 public AnimationClip GetAnimationClip(string name) {
+		 foreach (AnimationClip clip in animator.runtimeAnimatorController.animationClips)
+			 if (clip.name == name)
+				 return clip;
 
+		 return null;
+	 }
+
+	void ScrubAnimation() {
+		const int layerIndex = 0;
+		var stateInfo = animator.GetCurrentAnimatorStateInfo(layerIndex);
+		animator.Play(stateInfo.fullPathHash, layerIndex, excitement);
+		if (excitement > 1) {
+			animator.SetTrigger("next");
+			var nextState = animator.GetNextAnimatorStateInfo(layerIndex);
+			animator.Play(nextState.fullPathHash);
+			excitement = 0;
+		}
 	}
 }

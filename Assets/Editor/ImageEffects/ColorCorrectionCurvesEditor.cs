@@ -28,6 +28,8 @@ namespace UnityStandardAssets.ImageEffects
         SerializedProperty selectiveFromColor;
         SerializedProperty selectiveToColor;
 
+		SerializedProperty mix;
+
         private bool  applyCurveChanges = false;
 
         void OnEnable () {
@@ -36,6 +38,7 @@ namespace UnityStandardAssets.ImageEffects
             mode = serObj.FindProperty ("mode");
 
             saturation = serObj.FindProperty ("saturation");
+            mix = serObj.FindProperty ("mix");
 
             redChannel = serObj.FindProperty ("redChannel");
             greenChannel = serObj.FindProperty ("greenChannel");
@@ -82,6 +85,7 @@ namespace UnityStandardAssets.ImageEffects
             GUILayout.Label ("Use curves to tweak RGB channel colors", EditorStyles.miniBoldLabel);
 
             saturation.floatValue = EditorGUILayout.Slider( "Saturation", saturation.floatValue, 0.0f, 5.0f);
+            mix.floatValue = EditorGUILayout.Slider( "Mix", mix.floatValue, 0.0f, 1.0f);
 
             EditorGUILayout.PropertyField (mode, new GUIContent ("Mode"));
             EditorGUILayout.Separator ();

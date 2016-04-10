@@ -50,8 +50,8 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 1
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 3
     m_Resolution: 2
@@ -93,9 +93,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2483052}
-  - 114: {fileID: 2483053}
   m_Layer: 0
-  m_Name: ONE
+  m_Name: People
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,27 +112,8 @@ Transform:
   m_Children:
   - {fileID: 48559052}
   - {fileID: 388996002}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
---- !u!114 &2483053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2483051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f2b8353979564166806c7f673e258a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fuckedStart: 150
-  fuckedDelay: 1
-  fuckedEnd: 0
-  fuckedTime: 5
-  fuckedEaseType: 15
-  material: {fileID: 2100000, guid: 1878aaf33e84948f69095fef3e144763, type: 2}
-  PropertyName: _Fuckedupness
-  sun: {fileID: 1134918394}
+  m_Father: {fileID: 30323032}
+  m_RootOrder: 1
 --- !u!1 &12187253
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,6 +144,69 @@ Transform:
   - {fileID: 183353724}
   m_Father: {fileID: 242711781}
   m_RootOrder: 1
+--- !u!1 &30323031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 30323032}
+  - 95: {fileID: 30323033}
+  - 114: {fileID: 30323034}
+  m_Layer: 0
+  m_Name: AnimateScene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &30323032
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 30323031}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1838419139}
+  - {fileID: 2483052}
+  - {fileID: 1134918395}
+  - {fileID: 122648728}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!95 &30323033
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 30323031}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 91738100c86ba4503a968b90d45e87eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &30323034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 30323031}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56dea81d6b11b4ce49e63a153e7e6788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animName: FuckSun
+  time: 0
 --- !u!1 &48559049
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,10 +215,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 48559052}
-  - 114: {fileID: 48559050}
+  - 114: {fileID: 48559053}
   - 114: {fileID: 48559051}
+  - 114: {fileID: 48559050}
   m_Layer: 0
-  m_Name: PersonGuy (1)
+  m_Name: PersonGuy Riding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,6 +269,19 @@ Transform:
   - {fileID: 1669178588}
   m_Father: {fileID: 2483052}
   m_RootOrder: 0
+--- !u!114 &48559053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 48559049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd1a2365efe94a159eeb0292a115777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  propertyName: _Fuckedupness
+  value: 0
 --- !u!1 &72371439
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,8 +475,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 2.39, z: -7.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 30323032}
+  m_RootOrder: 3
 --- !u!114 &122648729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,7 +511,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 122648724}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fd999d1b2cf94a45a5b0a47ce074bef, type: 3}
   m_Name: 
@@ -518,8 +575,8 @@ MonoBehaviour:
       tangentMode: 0
     - time: 0.0040147305
       value: 1.0750242
-      inSlope: 1.4846027
-      outSlope: 1.4846027
+      inSlope: -0.2947415
+      outSlope: -0.2947415
       tangentMode: 0
     - time: 1
       value: 1
@@ -578,9 +635,10 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   saturation: 2.08
+  mix: 0
   selectiveCc: 0
-  selectiveFromColor: {r: 1, g: 1, b: 1, a: 1}
-  selectiveToColor: {r: 1, g: 1, b: 1, a: 1}
+  selectiveFromColor: {r: 0.74264705, g: 0.48599696, b: 0.48599696, a: 1}
+  selectiveToColor: {r: 0.051470578, g: 0.02762759, b: 0.02762759, a: 1}
   mode: 1
   updateTextures: 1
   colorCorrectionCurvesShader: {fileID: 4800000, guid: 62bcade1028c24ca1a39760ed84b9487,
@@ -1152,8 +1210,9 @@ GameObject:
   - 114: {fileID: 252084084}
   - 96: {fileID: 252084086}
   - 114: {fileID: 252084087}
+  - 114: {fileID: 252084088}
   m_Layer: 5
-  m_Name: TargetDot
+  m_Name: PartnerDot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1268,6 +1327,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cpuSpeed: 30
+  pauseTime:
+    min: 0.1
+    max: 0.4
+  nextPointDistance: 20
+--- !u!114 &252084088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 252084082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2015a39df34bb493f8be1620a35bc2b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exciteColor: {r: 1, g: 0, b: 0, a: 1}
+  player: {fileID: 0}
 --- !u!1 &388996000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,6 +1352,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 388996002}
+  - 114: {fileID: 388996004}
   - 114: {fileID: 388996001}
   - 114: {fileID: 388996003}
   m_Layer: 0
@@ -1321,13 +1398,26 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 388996000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb8ece314d2d45ff9390906cf99c9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 388996001}
   onKeyCode: 32
+--- !u!114 &388996004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 388996000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd1a2365efe94a159eeb0292a115777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  propertyName: _Fuckedupness
+  value: 0
 --- !u!1 &419676070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,7 +1479,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 3
 --- !u!1 &449515905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1874,7 +1964,7 @@ Transform:
   - {fileID: 2054658976}
   - {fileID: 561760959}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
 --- !u!1 &661579913
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,7 +2025,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 2
 --- !u!1 &726198722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1967,45 +2057,6 @@ Transform:
   - {fileID: 449515906}
   m_Father: {fileID: 388996002}
   m_RootOrder: 2
---- !u!1 &732056978
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 732056980}
-  - 114: {fileID: 732056979}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &732056979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 732056978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f72c5459ace6c4af3bd9c6a25b0eea0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &732056980
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 732056978}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
 --- !u!1 &733701986
 GameObject:
   m_ObjectHideFlags: 0
@@ -2731,12 +2782,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1134918393}
-  m_LocalRotation: {x: 0.40821794, y: -0.23456973, z: 0.109381676, w: 0.87542605}
+  m_LocalRotation: {x: -0.40821806, y: 0.23456876, z: -0.10938122, w: -0.87542635}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 30323032}
+  m_RootOrder: 2
 --- !u!1 &1189123274
 GameObject:
   m_ObjectHideFlags: 0
@@ -2984,9 +3035,10 @@ GameObject:
   - 224: {fileID: 1252194917}
   - 222: {fileID: 1252194919}
   - 114: {fileID: 1252194918}
+  - 114: {fileID: 1252194920}
   m_Layer: 5
   m_Name: PlayerDot
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3041,6 +3093,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1252194916}
+--- !u!114 &1252194920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1252194916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc634f4873cb4f3797d8e5584031182, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1282668388
 GameObject:
   m_ObjectHideFlags: 0
@@ -3666,6 +3729,7 @@ GameObject:
   - 33: {fileID: 1838419138}
   - 64: {fileID: 1838419137}
   - 23: {fileID: 1838419136}
+  - 114: {fileID: 1838419140}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -3728,8 +3792,22 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 40, y: 40, z: 40}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 30323032}
+  m_RootOrder: 0
+--- !u!114 &1838419140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1838419135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd2b9601962af4b4f8ff9faab0212abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uvOffset: {x: 0, y: 0}
+  uvScale: {x: 0.4, y: 0.4}
+  textureName: _MainTex
 --- !u!1 &1872290688
 GameObject:
   m_ObjectHideFlags: 0
@@ -4027,7 +4105,7 @@ RectTransform:
   - {fileID: 1252194917}
   - {fileID: 252084083}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -4055,7 +4133,7 @@ MonoBehaviour:
     width: 60
     height: 60
   minExciteDistance: 10
-  exciteFactor: 1
+  exciteFactor: 0.2
   exciteCurve:
     serializedVersion: 2
     m_Curve:
@@ -4073,6 +4151,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   debugText: {fileID: 975742917}
+  animator: {fileID: 30323033}
 --- !u!1 &2028079995
 GameObject:
   m_ObjectHideFlags: 0

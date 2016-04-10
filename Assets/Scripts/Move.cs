@@ -2,20 +2,22 @@
 using System.Collections;
 
 public class Move : MonoBehaviour {
+	public float radians;
 	public float period = 3.0f;
 	public float radius = -10f;
 	public float y;
-	public MoveType moveType = MoveType.InCircle;
 
-	public enum MoveType {
-		InCircle
-	}
+	public float RotateSpeed;
+	public float IncreaseSpeed = 1.0f;
+	public float DecreaseSpeed = 0.5f;
+	public float MinRotateSpeed = 1.0f;
+	public float MaxRotateSpeed = 50.0f;
 
 	void Update () {
-		if (moveType == MoveType.InCircle) {
-			float radians = 2f * Mathf.PI * (Time.time / period);
-			transform.localPosition = new Vector3 (Mathf.Sin (radians) * radius, y, Mathf.Cos (radians) * radius);
-		}
-	
+		RotateSpeed += Game.Instance.ExciteProximityFactor * IncreaseSpeed;
+		RotateSpeed -= DecreaseSpeed;
+		RotateSpeed = Mathf.Clamp (RotateSpeed, MinRotateSpeed, MaxRotateSpeed);
+		radians += Time.deltaTime * RotateSpeed;
+		transform.localPosition = new Vector3 (Mathf.Sin (radians) * radius, y, Mathf.Cos (radians) * radius);
 	}
 }

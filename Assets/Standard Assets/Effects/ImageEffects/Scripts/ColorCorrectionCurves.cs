@@ -33,6 +33,7 @@ namespace UnityStandardAssets.ImageEffects
         private Texture2D zCurveTex;
 
         public float saturation = 1.0f;
+		public float mix = 1.0f;
 
         public bool  selectiveCc = false;
 
@@ -157,6 +158,7 @@ namespace UnityStandardAssets.ImageEffects
                 ccDepthMaterial.SetTexture ("_ZCurve", zCurveTex);
                 ccDepthMaterial.SetTexture ("_RgbDepthTex", rgbDepthChannelTex);
                 ccDepthMaterial.SetFloat ("_Saturation", saturation);
+                ccDepthMaterial.SetFloat ("_Mix", mix);
 
                 Graphics.Blit (source, renderTarget2Use, ccDepthMaterial);
             }
@@ -164,6 +166,7 @@ namespace UnityStandardAssets.ImageEffects
 			{
                 ccMaterial.SetTexture ("_RgbTex", rgbChannelTex);
                 ccMaterial.SetFloat ("_Saturation", saturation);
+                ccMaterial.SetFloat ("_Mix", mix);
 
                 Graphics.Blit (source, renderTarget2Use, ccMaterial);
             }

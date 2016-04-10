@@ -7,6 +7,8 @@ Shader "Hidden/ColorCorrectionCurves" {
 		_ZCurve ("_ZCurve (RGB)", 2D) = "" {}
 		
 		_RgbDepthTex ("_RgbDepthTex (RGB)", 2D) = "" {}
+
+		_Mix("_Mix", Float) = 1.0
 	}
 	
 	// note: also have a look at ColorCorrectionCurvesSimple
@@ -35,6 +37,7 @@ Shader "Hidden/ColorCorrectionCurves" {
 	sampler2D _RgbDepthTex;
 
 	fixed _Saturation;
+	fixed _Mix;
 	
 	v2f vert( appdata_img v ) 
 	{
@@ -54,6 +57,7 @@ Shader "Hidden/ColorCorrectionCurves" {
 	half4 frag(v2f i) : SV_Target 
 	{
 		half4 color = tex2D(_MainTex, i.uv); 
+		half4 origColor = color;
 
 		half3 ycoords = half3(0.5,1.5,2.5) * 0.25;
 		
@@ -72,6 +76,9 @@ Shader "Hidden/ColorCorrectionCurves" {
 
 		half lum = Luminance(color.rgb);
 		color.rgb = lerp(half3(lum,lum,lum), color.rgb, _Saturation);
+
+		color.rgb = lerp(origColor.rgb, color.rgb, _Mix);
+
 		return color;
 	}
 
